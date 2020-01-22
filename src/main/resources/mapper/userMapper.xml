@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.bd.dao.UserMapper">
+		
+    <select id="selectUserByUserNo" parameterType="Long" resultType="UserDTO">
+        SELECT * FROM USER_INFO WHERE USER_NO = #{userNo}
+    </select>
+    	
+    <select id="selectUserList" resultType="userDto">
+        SELECT * FROM USER_INFO
+    </select>
+    	
+    <insert id="insertUser">
+		INSERT INTO USER_INFO
+			(ID, PASSWORD, NAME, SEX, REG_DT)
+		VALUES(#{id}, #{password}, #{name}, #{sex}, now());    
+    </insert>
+    	
+</mapper>
