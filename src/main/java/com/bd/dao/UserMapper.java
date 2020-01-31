@@ -2,8 +2,11 @@ package com.bd.dao;
 
 import java.util.List;
 
-import com.bd.model.UserDTO;
+import org.apache.ibatis.annotations.Mapper;
 
+import com.bd.model.res.UserDTO;
+
+@Mapper
 public interface UserMapper {
 	public UserDTO selectUserByUserNo(Long userNo);
 	public List<UserDTO> selectUserList();

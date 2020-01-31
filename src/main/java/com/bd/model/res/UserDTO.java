@@ -1,15 +1,21 @@
-package com.bd.model;
+package com.bd.model.res;
 
 import java.time.LocalDateTime;
 
-public class UserDTO {
-	private Long userNo;
-	private String name;
-	private String password;
-	private String id;
-	private String sex;
-	private LocalDateTime regDt;
+import com.bd.model.common.res.CommonResDTO;
 
+public class UserDTO extends CommonResDTO{
+	
+	private Long userNo;
+	
+	private String name;
+	
+	private String password;
+	
+	private String id;
+	
+	private String sex;
+	
 	public Long getUserNo() {
 		return userNo;
 	}
@@ -49,13 +55,4 @@ public class UserDTO {
 	public void setSex(String set) {
 		this.sex = set;
 	}
-
-	public LocalDateTime getRegDt() {
-		return regDt;
-	}
-
-	public void setRegDt(LocalDateTime regDt) {
-		this.regDt = regDt;
-	}
-
 }

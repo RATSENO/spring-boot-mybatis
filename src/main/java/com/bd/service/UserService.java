@@ -2,7 +2,7 @@ package com.bd.service;
 
 import java.util.List;
 
-import com.bd.model.UserDTO;
+import com.bd.model.res.UserDTO;
 
 public interface UserService {
 	

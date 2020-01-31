@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bd.dao.UserMapper;
-import com.bd.model.UserDTO;
+import com.bd.model.res.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService{

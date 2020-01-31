@@ -57,7 +57,7 @@ public class MyBatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         
         sqlSessionFactory.setDataSource(dataSource);
-        sqlSessionFactory.setTypeAliasesPackage("com.bd.model");
+        sqlSessionFactory.setTypeAliasesPackage("com.bd.model.*");
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
         sqlSessionFactory.setConfigLocation(resolver.getResource("classpath:mybatis-config.xml"));
