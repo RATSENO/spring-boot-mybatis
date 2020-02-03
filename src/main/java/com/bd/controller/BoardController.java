@@ -1,6 +1,7 @@
 package com.bd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class BoardController {
 	BoardService boardService;
 
 	@RequestMapping(value = "/boards", method = RequestMethod.GET)
-	public CommonResponse getBoardList(BoardSearchDTO boardSearchDTO) {
+	public CommonResponse getBoardList(@ModelAttribute BoardSearchDTO boardSearchDTO) {
 		return boardService.selectBoardList(boardSearchDTO);
 	}
 
