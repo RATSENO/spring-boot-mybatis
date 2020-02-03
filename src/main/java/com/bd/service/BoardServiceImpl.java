@@ -34,7 +34,6 @@ public class BoardServiceImpl implements BoardService{
 		pageInfo.setTotalCount(boardListCnt);
 		body.put("pageInfo", pageInfo);
 		
-		
 		return new ResponseEntity<Map<String,Object>>(body, HttpStatus.OK);
 	}
 

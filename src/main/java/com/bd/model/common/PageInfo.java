@@ -67,7 +67,12 @@ public class PageInfo {
 	}
 
 	public Integer getStartRowNum() {
-		return ((page - 1) * size)+1;
+		if(page <= 1) {
+			page = 1;
+			return ((page - 1) * size);
+		}else {
+			return ((page - 1) * size)+1;	
+		}
 	}
 
 	public Integer getEndRowNum() {
