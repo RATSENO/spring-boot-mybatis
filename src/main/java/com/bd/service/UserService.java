@@ -1,18 +1,17 @@
 package com.bd.service;
 
-import java.util.List;
-
+import com.bd.model.common.CommonResponse;
 import com.bd.model.res.UserDTO;
 
 public interface UserService {
 	
 	/* 전체 회원 목록 */
-	public List<UserDTO> getUsers();
+	public CommonResponse getUsers();
 	
 	/* 회원번호로 회원 조회 */
-	public UserDTO getUserDetail(Long userNo);
+	public CommonResponse getUserDetail(Long userNo);
 	
 	/* 회원등록 */
-	public int registUser(UserDTO userDTO);
+	public CommonResponse registUser(UserDTO userDTO);
 
 }

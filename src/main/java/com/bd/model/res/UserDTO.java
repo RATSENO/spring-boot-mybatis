@@ -1,7 +1,5 @@
 package com.bd.model.res;
 
-import java.time.LocalDateTime;
-
 import com.bd.model.common.res.CommonResDTO;
 
 public class UserDTO extends CommonResDTO{

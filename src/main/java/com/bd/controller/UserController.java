@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bd.dao.UserMapper;
+import com.bd.model.common.CommonResponse;
 import com.bd.model.res.UserDTO;
 import com.bd.service.UserService;
 
@@ -17,21 +18,21 @@ import com.bd.service.UserService;
 public class UserController {
 
 	@Autowired
-	private UserService userService; 
-	
+	private UserService userService;
+
 	@GetMapping(value = "/users")
-	public List<UserDTO> getUserList(){
+	public CommonResponse getUsers() {
 		return userService.getUsers();
 	}
-	
+
 	@GetMapping(value = "/users/{userNo}")
-	public UserDTO getUserByUserNo(@PathVariable(name = "userNo") Long userNo) {
+	public CommonResponse getUserDetail(@PathVariable(name = "userNo") Long userNo) {
 		return userService.getUserDetail(userNo);
 	}
-	
+
 	@PostMapping(value = "/user/regist")
-	public void registUser(@RequestBody UserDTO userDTO) {
-		userService.registUser(userDTO);
+	public CommonResponse registUser(@RequestBody UserDTO userDTO) {
+		return userService.registUser(userDTO);
 	}
-	
+
 }
