@@ -8,7 +8,11 @@ import com.bd.model.res.UserDTO;
 
 @Mapper
 public interface UserMapper {
+	
 	public UserDTO selectUserByUserNo(Long userNo);
+	
 	public List<UserDTO> selectUserList();
+	
 	public int insertUser(UserDTO userDTO);
+	
 }

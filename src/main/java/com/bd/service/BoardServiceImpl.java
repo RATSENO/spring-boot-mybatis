@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 
 	@Override
-	public CommonResponse selectBoardList(BoardSearchDTO boardSearchDTO) {
+	public CommonResponse getBoardList(BoardSearchDTO boardSearchDTO) {
 
 		// header 영역
 		CommonHeader header = new CommonHeader("200", "ok", "");
@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public CommonResponse selectBoard(Long boardNo) {
+	public CommonResponse getBoard(Long boardNo) {
 		// header 영역
 		CommonHeader header = new CommonHeader("200", "ok", "");
 
@@ -59,7 +59,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public CommonResponse updateBoard(BoardUpdateDTO boardUpdateDTO) {
+	public CommonResponse modifyBoard(BoardUpdateDTO boardUpdateDTO) {
 		// header 영역
 		CommonHeader header = new CommonHeader("200", "ok", "");
 

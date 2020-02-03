@@ -21,16 +21,16 @@ public class BoardController {
 
 	@RequestMapping(value = "/boards", method = RequestMethod.GET)
 	public CommonResponse getBoardList(@ModelAttribute BoardSearchDTO boardSearchDTO) {
-		return boardService.selectBoardList(boardSearchDTO);
+		return boardService.getBoardList(boardSearchDTO);
 	}
 
 	@RequestMapping(value = "/boards/{boardNo}", method = RequestMethod.GET)
 	public CommonResponse getBoard(@PathVariable(name = "boardNo") Long boardNo) {
-		return boardService.selectBoard(boardNo);
+		return boardService.getBoard(boardNo);
 	}
 
 	@RequestMapping(value = "/board", method = RequestMethod.PUT)
-	public CommonResponse getBoard(@RequestBody BoardUpdateDTO boardUpdateDTO) {
-		return boardService.updateBoard(boardUpdateDTO);
+	public CommonResponse modifyBoard(@RequestBody BoardUpdateDTO boardUpdateDTO) {
+		return boardService.modifyBoard(boardUpdateDTO);
 	}
 }

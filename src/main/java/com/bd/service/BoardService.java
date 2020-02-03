@@ -9,10 +9,10 @@ public interface BoardService {
 	// public List<BoardDTO> selectBoardList(BoardSearchDTO boardSearchDTO);
 	// public ResponseEntity<Map<String, Object>> selectBoardList(BoardSearchDTO
 	// boardSearchDTO);
-	public CommonResponse selectBoardList(BoardSearchDTO boardSearchDTO);
+	public CommonResponse getBoardList(BoardSearchDTO boardSearchDTO);
 
 	// public ResponseEntity<Map<String, Object>> selectBoard(Long BoardNo);
-	public CommonResponse selectBoard(Long BoardNo);
+	public CommonResponse getBoard(Long BoardNo);
 
-	public CommonResponse updateBoard(BoardUpdateDTO boardUpdateDTO);
+	public CommonResponse modifyBoard(BoardUpdateDTO boardUpdateDTO);
 }
