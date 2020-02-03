@@ -66,27 +66,46 @@ public class BoardServiceImpl implements BoardService {
 		// response 영역
 		BoardDTO boardDTO = boardMapper.selectBoardByBoardNo(boardUpdateDTO.getBoardNo());
 		if (boardDTO == null) {
+
 			Map<String, Object> body = new HashMap<String, Object>();
 			body.put("value", null);
 			header.setCode("998");
 			header.setMessage("해당 게시물이 없습니다.");
 
 			return new CommonResponse(header, body);
-		}
 
-		int updateCnt = boardMapper.boardUpdate(boardUpdateDTO);
-		if (updateCnt > 0) {
-			Map<String, Object> body = new HashMap<String, Object>();
-			body.put("value", null);
-			header.setMessage("수정 되었습니다.");
-			return new CommonResponse(header, body);
 		} else {
-			Map<String, Object> body = new HashMap<String, Object>();
-			body.put("value", null);
-			header.setCode("999");
-			header.setMessage("수정에 실패하였습니다..");
+			if (boardDTO.getUserNo() != boardUpdateDTO.getUserNo()) {
 
-			return new CommonResponse(header, body);
+				Map<String, Object> body = new HashMap<String, Object>();
+				body.put("value", null);
+				header.setCode("997");
+				header.setMessage("해당 사용자는 수정할 수 없습니다.");
+
+				return new CommonResponse(header, body);
+
+			} else {
+
+				int updateCnt = boardMapper.boardUpdate(boardUpdateDTO);
+
+				if (updateCnt > 0) {
+
+					Map<String, Object> body = new HashMap<String, Object>();
+					body.put("value", null);
+					header.setMessage("수정 되었습니다.");
+
+					return new CommonResponse(header, body);
+
+				} else {
+
+					Map<String, Object> body = new HashMap<String, Object>();
+					body.put("value", null);
+					header.setCode("999");
+					header.setMessage("수정에 실패하였습니다..");
+
+					return new CommonResponse(header, body);
+				}
+			}
 		}
 	}
 
