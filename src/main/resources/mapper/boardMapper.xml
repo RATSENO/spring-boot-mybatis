@@ -30,7 +30,33 @@
 		<if test='userId != "" and userId != null'>
 		and ui.id like concat('%', #{userId}, '%')
 		</if>
+         <if test="pageInfo != null">
+            limit #{pageInfo.startRowNum},#{pageInfo.endRowNum}
+        </if>
     </select>
+    
+    <select id="selectBoardListCount" resultType="Integer" parameterType="BoardSearchDTO">
+		select 
+				count(bi.board_no) as totalCount
+		from board_info bi 
+		join user_info ui
+		on bi.user_no = ui.user_no
+		where 1 = 1
+		<if test='boardNo gt 0'>
+		and bi.board_no= #{boardNo}
+		</if>
+		<if test='title != "" and title != null'>
+		and bi.title like concat('%', #{title}, '%')
+		</if>
+		<if test='userId != "" and userId != null'>
+		and ui.id like concat('%', #{userId}, '%')
+		</if>
+        <!-- 
+        <if test="pageInfo != null">
+            limit #{pageInfo.startRowNum},#{pageInfo.endRowNum}
+        </if>
+         -->
+    </select>    
     
     <select id="selectBoardByBoardNo" resultType="BoardDTO">
 		select 

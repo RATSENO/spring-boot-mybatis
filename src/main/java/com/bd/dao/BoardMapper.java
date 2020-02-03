@@ -12,6 +12,8 @@ public interface BoardMapper {
 	
 	public List<BoardDTO> selectBoardList(BoardSearchDTO boardSearchDTO);
 	
+	public int selectBoardListCount(BoardSearchDTO boardSearchDTO);
+	
 	public BoardDTO selectBoardByBoardNo(Long boardNo);
 	
 }

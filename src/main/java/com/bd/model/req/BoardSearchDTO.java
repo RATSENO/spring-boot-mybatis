@@ -1,6 +1,8 @@
 package com.bd.model.req;
 
-public class BoardSearchDTO {
+import com.bd.model.common.req.CommonReqDTO;
+
+public class BoardSearchDTO extends CommonReqDTO{
 
 	private Long boardNo;
 

@@ -1,8 +1,10 @@
 package com.bd.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class BoardController {
 	BoardService boardService;
 	
 	@RequestMapping(value = "/boards", method = RequestMethod.GET)
-	public List<BoardDTO> getBoardList(BoardSearchDTO boardSearchDTO){
+	public ResponseEntity<Map<String, Object>> getBoardList(BoardSearchDTO boardSearchDTO){
 		return boardService.selectBoardList(boardSearchDTO);
 	}
 	
