@@ -13,5 +13,5 @@ public interface UserService {
 	
 	/* 회원등록 */
 	public CommonResponse registUser(UserDTO userDTO);
-
+	
 }

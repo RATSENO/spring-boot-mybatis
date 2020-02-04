@@ -18,5 +18,17 @@
 			(ID, PASSWORD, NAME, SEX, REG_DT)
 		VALUES(#{id}, #{password}, #{name}, #{sex}, now());    
     </insert>
+    
+    <select id="checkLoginUser" parameterType="UserLoginDTO" resultType="UserDTO">
+		SELECT user_no, 
+		       id, 
+		       password, 
+		       name, 
+		       sex, 
+		       reg_dt 
+		FROM   user_info
+		where id = #{id}
+		and   password = #{password}    
+    </select>
     	
 </mapper>

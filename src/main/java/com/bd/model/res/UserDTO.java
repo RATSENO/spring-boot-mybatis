@@ -1,13 +1,16 @@
 package com.bd.model.res;
 
 import com.bd.model.common.res.CommonResDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserDTO extends CommonResDTO{
 	
+	@JsonIgnore
 	private Long userNo;
 	
 	private String name;
 	
+	@JsonIgnore
 	private String password;
 	
 	private String id;
