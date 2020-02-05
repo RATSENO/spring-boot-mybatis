@@ -47,16 +47,32 @@
 				</table>			
 			</div>
 		</div>
-		<!-- 하단 부분 -->
-		<div id="paging"></div>
+		<!-- 페이징 부분 -->
+		<div id="paging">
+		</div>
+		<div>
+			<button type="button" id="btnReg">등록</button>	
+		</div>
 	</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
+/*<![CDATA[*/ 
+	var SNO = [[${session.SNO}]]; 
+/*]]>*/
+
 $(function(){
 	init();
 	
 	$("#btnGetList").on('click', function(){
 		getList();
+	});
+	
+	$("#btnReg").on('click', function(){
+		goRegPage();
+	});
+	
+	$("#list").on( 'click', 'a.detail', function(){
+		goModPage();
 	});
 });
 
@@ -107,7 +123,14 @@ function getList(page){
 				
 				var listHtml = "";
 				$.each(list, function(index, item){
-					listHtml += "<tr class='row'><td>"+item.boardNo+"</td><td>"+item.title+"</td><td>"+item.userId+"</td><td>"+item.regDt+"</td><td>"+item.modiDt+"</td></tr>";
+					/* 
+					if(SNO === item.boardNo){
+						listHtml += "<tr class='row'><td><a href='#'>"+item.boardNo+"</a></td><td>"+item.title+"</td><td>"+item.userId+"</td><td>"+item.regDt+"</td><td>"+item.modiDt+"</td></tr>";
+					}else{
+						listHtml += "<tr class='row'><td>"+item.boardNo+"</td><td>"+item.title+"</td><td>"+item.userId+"</td><td>"+item.regDt+"</td><td>"+item.modiDt+"</td></tr>";
+					}
+					 */
+					listHtml += "<tr class='row'><td><a href='#' class='detail'>"+item.boardNo+"</a></td><td>"+item.title+"</td><td>"+item.userId+"</td><td>"+item.regDt+"</td><td>"+item.modiDt+"</td></tr>";
 				});
 				$("#list").find("tr.row").remove();
 				$("#list").append(listHtml);
@@ -124,6 +147,14 @@ function getList(page){
 		    // try - catch - finally의 finally 구문과 동일합니다.
 		  }
 		});
+};
+
+function goRegPage(){
+	alert("등록 페이지 이동");
+};
+
+function goModPage(){
+	alert("상세 페이지 이동");
 };
 
 function drawPaging(totalSize, pageSize, pageCount, currentPage){

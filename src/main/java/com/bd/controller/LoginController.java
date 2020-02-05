@@ -25,6 +25,7 @@ public class LoginController {
 		UserDTO userDTO = loginService.userLogin(userLoginDTO);
 		if(userDTO != null) {
 			
+			session.setAttribute("SNO", userDTO.getUserNo());
 			session.setAttribute("SID", userDTO.getId());
 			session.setAttribute("SNAME", userDTO.getName());
 			session.setAttribute("SSEX", userDTO.getSex());
