@@ -48,10 +48,7 @@
 			</div>
 		</div>
 		<!-- 하단 부분 -->
-		<div>
-		
-		</div>
-		
+		<div id="paging"></div>
 	</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
@@ -67,14 +64,20 @@ function init(){
 	getList();
 };
 
-function getList(){
+function getList(page){
 	var requestUrl = "/boards?";
-	var page = 1;
+	var pageNo = "";
+	
+	if(typeof page == "undefined" || page == null || page == ""){
+		pageNo = 1;
+	}else{
+		pageNo = page;
+	}
 	var size = 10;
 	var title = $("#title").val().trim() || "";
 	var userId = $("#userId").val().trim() || "";
 	
-	requestUrl += "page="+page;
+	requestUrl += "page="+pageNo;
 	requestUrl += "&size="+size;
 	requestUrl += "&title="+title;
 	requestUrl += "&userId="+userId;
@@ -108,6 +111,8 @@ function getList(){
 				});
 				$("#list").find("tr.row").remove();
 				$("#list").append(listHtml);
+				
+				drawPaging(pageInfo.totalCount, 10, 5, pageNo);
 			}
 		  },
 		  error	: function(xhr, status, error){
@@ -119,6 +124,54 @@ function getList(){
 		    // try - catch - finally의 finally 구문과 동일합니다.
 		  }
 		});
+};
+
+function drawPaging(totalSize, pageSize, pageCount, currentPage){
+	console.log("현재 페이지 :" + currentPage);
+	
+	var totalPage = Math.ceil(totalSize / pageSize);
+	var pageGroup = Math.ceil(currentPage / pageCount);
+	
+	console.log('pageGroup:' + pageGroup);
+	
+	var lastPage = pageGroup *  pageCount;
+	if(lastPage > totalPage){
+		lastPage = totalPage;
+	}
+	
+	var firstPage = lastPage - (pageCount -1);
+	if(firstPage < 0){
+		firstPage = 1;
+	}
+	
+	var nextPage = lastPage + 1;
+	var prevPage = firstPage - 1;
+	
+	console.log("lastPage :" + lastPage );
+	console.log("firstPage : " + firstPage);
+	console.log("nextPage : " + nextPage);
+	console.log("prevPage : " + prevPage);
+	
+	$divPaging = $("#paging");
+	
+	var html = "";
+	if(prevPage > 0){
+		html += "<a href=# id='prev' onclick='getList("+ prevPage +");'><</a> ";
+	}
+	
+	for(var i=firstPage; i <= lastPage; i++){
+		html += "<a href='#' id=" + i + "  onclick='getList("+ i +");' >" + i + "</a> "
+	}
+	
+	if(lastPage < totalPage){
+		html += "<a href=# id='next' onclick='getList("+ nextPage +");'>></a>";
+	}
+	
+    $("#paging").html(html);    // 페이지 목록 생성
+    $("#paging a").css("color", "black");
+    $("#paging a#" + currentPage).css({"text-decoration":"none", 
+                                       "color":"red", 
+                                       "font-weight":"bold"});
 };
 </script>
 </body>

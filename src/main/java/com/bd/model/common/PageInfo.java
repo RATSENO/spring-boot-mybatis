@@ -69,14 +69,12 @@ public class PageInfo {
 	public Integer getStartRowNum() {
 		if(page <= 1) {
 			page = 1;
-			return ((page - 1) * size);
-		}else {
-			return ((page - 1) * size)+1;	
 		}
+		return ((page - 1) * size);	
 	}
 
 	public Integer getEndRowNum() {
-		return (page) * size;
+		return size;
 	}
 
 	public void setStartRowNum(Integer startRowNum) {
