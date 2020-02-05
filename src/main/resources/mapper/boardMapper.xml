@@ -33,6 +33,7 @@
 		<if test='userId != "" and userId != null'>
 		and ui.id like concat('%', #{userId}, '%')
 		</if>
+		order by bi.reg_dt desc 
          <if test="pageInfo != null">
             limit #{pageInfo.startRowNum},#{pageInfo.endRowNum}
         </if>
