@@ -57,7 +57,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
 /*<![CDATA[*/ 
-	var SNO = [[${session.SNO}]]; 
+	var SNO = [[${session.SNO}]];
 /*]]>*/
 
 $(function(){
@@ -151,10 +151,12 @@ function getList(page){
 
 function goRegPage(){
 	alert("등록 페이지 이동");
+	location.href="/boardRegist";
 };
 
 function goModPage(){
 	alert("상세 페이지 이동");
+	location.href="/boardModify";
 };
 
 function drawPaging(totalSize, pageSize, pageCount, currentPage){
