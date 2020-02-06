@@ -110,7 +110,7 @@ function renderingDetail(data){
 		$("#modiDt").val(detailInfo.modiDt);
 		$("#regDt").val(detailInfo.regDt);
 		$("#userId").val(detailInfo.userId);
-		$("#userId").data("userNo", detailInfo.userNo);
+		$("#userId").data("user_no", detailInfo.userNo);
 		
 	}
 };
@@ -126,7 +126,7 @@ function requestMod(){
 	param.boardNo = $("#boardNo").val().trim();
 	param.title = $("#title").val().trim();
 	param.content = $("#content").val().trim();
-	param.userNo = $("#userId").data("userNo");
+	param.userNo = $("#userId").data("user_no");
 	
 	$.ajax({
 		  type	: "PUT", //요청 메소드 타입
