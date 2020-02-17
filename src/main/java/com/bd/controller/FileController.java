@@ -42,7 +42,6 @@ public class FileController {
 		try {
 			Files.createDirectory(this.fileLocation);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -52,11 +51,13 @@ public class FileController {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		Path targetLocation = this.fileLocation.resolve(fileName);
 		try {
+			
 			Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			
 			e.printStackTrace();
+			
 		}
 		
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -75,9 +76,9 @@ public class FileController {
 		try {
 			resource = new UrlResource(filePath.toUri());
 			contentType = httpServletRequest.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (Exception ex) {
+			
+			ex.printStackTrace();
 		}
 
 		
