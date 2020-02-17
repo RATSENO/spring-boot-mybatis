@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.bd.config.FileUploadConfig;
+import com.bd.file.config.FileStorageProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(FileUploadConfig.class)
+@EnableConfigurationProperties(FileStorageProperties.class)
 public class CompanyProjectApplication {
 
 	public static void main(String[] args) {

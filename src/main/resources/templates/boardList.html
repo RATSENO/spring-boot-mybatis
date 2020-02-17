@@ -53,6 +53,9 @@
 		<div>
 			<button type="button" id="btnReg">등록</button>	
 		</div>
+		<div>
+			<button type="button" id="btnFile">파일업로드 테스트</button>	
+		</div>		
 	</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
 <script type="text/javascript">
@@ -69,6 +72,10 @@ $(function(){
 	
 	$("#btnReg").on('click', function(){
 		goRegPage();
+	});
+	
+	$("#btnFile").on('click', function(){
+		location.href="/fileUpload";
 	});
 	
 	$("#list").on( 'click', 'a.detail', function(){
